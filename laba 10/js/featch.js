@@ -2,10 +2,8 @@ const form = document.querySelector(".form");
 const submitButton = form.querySelector(".form__submit");
 
 function sendRequest(e) {
-  e.preventDefault(); // Предотвращаем отправку формы по умолчанию
-  submitButton.disabled = true; // Отключаем кнопку отправки
-
-  // Получаем значения полей формы
+  e.preventDefault(); 
+  submitButton.disabled = true;
   const classroomInput = form.querySelector(".form__class");
   const temperatureInput = form.querySelector(".form__temp");
 
@@ -16,14 +14,13 @@ function sendRequest(e) {
 
   fetchRequest("POST", tempURL, body)
     .then((response) => {
-      submitButton.disabled = false; // Включаем кнопку отправки после завершения запроса
+      submitButton.disabled = false; 
     });
 }
 
-// URL для отправки запроса
+
 const tempURL = "http://194.67.93.117:80/temp";
 
-// Функция для выполнения запроса
 function fetchRequest(method, url, body = null) {
   return fetch(url, {
     method: method,
@@ -54,14 +51,11 @@ function fetchRequest(method, url, body = null) {
     });
 }
 
-// Добавление слушателя события отправки формы
 form.addEventListener("submit", sendRequest);
 
-// Уведомления
 const toasts = document.querySelector(".toasts");
 const toastClose = document.querySelector(".toasts__close");
 
-// Отображение уведомлений
 function showToasts(status, response) {
   toasts.classList.remove("toasts_hidden", "toasts_error");
   toasts.classList.add("toasts_active");
@@ -78,7 +72,6 @@ function showToasts(status, response) {
   toasts.appendChild(toastDiv);
 }
 
-// Закрытие уведомлений
 function hideToasts(e) {
   if (e.target.closest(".toasts__close")) {
     toasts.classList.remove("toasts_active");
@@ -88,17 +81,14 @@ function hideToasts(e) {
 
 toasts.addEventListener("click", hideToasts);
 
-// Галерея
 const gallery = document.querySelector(".gallery__list");
 const imagesURL = "http://194.67.93.117:80/images";
 const loadGif = document.querySelector(".gallery__loading");
 const retryButton = document.querySelector(".gallery__button");
 
-// Загрузка изображений при загрузке страницы и при клике на кнопку повтора
 document.addEventListener("DOMContentLoaded", loadImages);
 retryButton.addEventListener("click", loadImages);
 
-// Загрузка изображений
 function loadImages() {
   toasts.classList.remove("toasts_active");
   toasts.classList.add("toasts_hidden");
@@ -139,7 +129,6 @@ function loadImages() {
     });
 }
 
-// Получение изображений
 function getImages(method, url) {
   loadGif.classList.remove("gallery__loading_none");
 
