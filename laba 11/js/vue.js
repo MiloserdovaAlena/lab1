@@ -4,7 +4,7 @@ createApp({
   data() {
     return {
         textInput: '',
-        maxCharacters: 10,
+        maxCharacters: 30,
         entries: []
     };
   },

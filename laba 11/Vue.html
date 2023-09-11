@@ -13,7 +13,10 @@
         <button @click="addEntry" :disabled="textInput === '' || isTextTooLong">
             Добавить запись
         </button>
-        <p v-show="textInput.length > 0 && textInput.length <= maxCharacters" :class="{ 'green-text': textInput.length > 0 && textInput.length <= maxCharacters }">
+        <p v-show="textInput.length > 0 && textInput.length <= maxCharacters -10" :class="{ 'green-text': textInput.length > 0 && textInput.length <= maxCharacters-10 }">
+            Символов: {{ textInput.length }}/{{ maxCharacters }}
+        </p>
+        <p v-show="textInput.length > maxCharacters-10 && textInput.length <= maxCharacters" :class="{ 'yellow-text': textInput.length > maxCharacters -10 && textInput.length <= maxCharacters}">
             Символов: {{ textInput.length }}/{{ maxCharacters }}
         </p>
         <p v-show="textInput.length > maxCharacters" class="red-text">

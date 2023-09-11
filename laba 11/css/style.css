@@ -40,6 +40,11 @@ button {
     color: #ff0000;
 }
 
+.yellow-text {
+    color: yellow;
+}
+
+
 .list {
     list-style: none;
     padding: 0;
